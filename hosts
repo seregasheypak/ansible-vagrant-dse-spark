@@ -1,3 +1,10 @@
+#Do not fix mess with vagrant keys and Ansible working as provisioner. Useless waste of time.
+dsenode01 ansible_ssh_user=vagrant ansible_ssh_pass=vagrant
+dsenode02 ansible_ssh_user=vagrant ansible_ssh_pass=vagrant
+dsenode03 ansible_ssh_user=vagrant ansible_ssh_pass=vagrant
+dsenode04 ansible_ssh_user=vagrant ansible_ssh_pass=vagrant
+
+
 [dse]
 dsenode01
 dsenode03
