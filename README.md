@@ -1,12 +1,19 @@
 # Vagrant+Ansible+Cassandra DSE + Spark 1.2
 
+## What is does
+Installs 
+* DSE 4.6
+* OpsCenter 5.1
+* Spark 1.2
+using Vagrant and Ansible.
+
 ## Installed services location
-| Node name      | IP |spark-master|spark-worker  | dse  | opscenter|
-|:-------------  |:--------------- |:------------ |:---- | :------- |
-| dsenode01      | 192.168.56.10   | +            | +    |          |
-| dsenode02      | 192.168.56.20   |              | +    |          |
-| dsenode03      | 192.168.56.30   |              | +    |          |
-| dsenode04      | 192.168.56.30   |              |      | +        | 
+| Node name      | IP              |spark-master  |spark-worker  | dse  | opscenter|
+|:---------------|:----------------|:-------------|:-------------|:-----|:---------|
+| dsenode01      | 192.168.56.10   | +            | +            |  +   |          |
+| dsenode02      | 192.168.56.20   |              | +            |  +   |          |
+| dsenode03      | 192.168.56.30   |              | +            |  +   |          |
+| dsenode04      | 192.168.56.30   |              |              |      | +        |
 
 ## UI access
 |Service name|url|
