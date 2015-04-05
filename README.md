@@ -1,11 +1,13 @@
 # Vagrant+Ansible+Cassandra DSE + Spark 1.2
 
 ## What is does
-Installs 
-* DSE 4.6
-* OpsCenter 5.1
-* Spark 1.2
-using Vagrant and Ansible.
+* Installs 
+    * DSE 4.6
+    * OpsCenter 5.1
+    * Spark 1.2
+* Tweaks
+    * updates your local /etc/hosts using vagrant-hostsupdater plugin
+    * Caches installed packages to reuse them using vagrant-cachier plugin
 
 ## Installed services location
 | Node name      | IP              |spark-master  |spark-worker  | dse  | opscenter|
@@ -26,7 +28,6 @@ using Vagrant and Ansible.
 * [Vagrant](https://www.vagrantup.com/) 1.6 or greater.
     * vagrant plugin install vagrant-hostsupdater to update your /etc/hosts
     * vagrant plugin install vagrant-cachier to speedup apt_cache for all instances sharing it
-    * vagrant plugin install vagrant-host-shell to run shell lines on remote host
 * [Ansible](http://docs.ansible.com/intro_installation.html#latest-releases-via-homebrew-mac-osx)  
 
 ## Run Spark downloader
@@ -48,11 +49,15 @@ Run script to download Apache Spark locally. Then Ansible is going to upload bin
 vagrant up
 ```
 ## start spark
-Run Ansible with spark related tags in order to start spark services in proper order
+Run Ansible with spark related tags in order to start spark services in proper order. Vagrant and Ansible have weird ad-hoc integration, 
+hope it would be easier to run adhoc Ansible for vagrant later. I prepared rwo agly scripts for u.
 ```shell
-#Restart spark-master service
-ANSIBLE_ARGS='--tags=start-spark-master' vagrant provision dsenode01
+#restart spark-master 
+chmod +x start-spark-master.sh
+./start-spark-master.sh
 
-#restart spark-worker services
-ANSIBLE_ARGS='--tags=start-spark-worker' vagrant provision
+#restart spark-workers 
+chmod +x start-spark-master.sh
+./start-spark-master.sh
 ```
+Feel free to suggest how-to fix this nighmare
