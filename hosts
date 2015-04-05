@@ -1,0 +1,15 @@
+[dse]
+dsenode01
+dsenode03
+dsenode03
+
+[opscenter]
+dsenode04
+
+[sparkmasters]
+dsenode01
+
+[sparkworkers]
+dsenode01
+dsenode03
+dsenode03

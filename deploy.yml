@@ -1,0 +1,34 @@
+---
+- hosts: all
+  user: vagrant
+  sudo: True
+  roles:
+    - common
+
+# DataStax Enterprise
+- hosts: dse
+  user: vagrant
+  sudo: True
+  roles:
+    - dse-install
+
+# Free opscenter
+- hosts: opscenter
+  user: vagrant
+  sudo: True
+  roles:
+    - opscenter
+
+# Add Spark
+- hosts: sparkmasters
+  user: vagrant
+  sudo: True
+  roles:
+    - spark_master
+
+- hosts: sparkworkers
+  user: vagrant
+  sudo: True
+  roles:
+    - spark_workers
+

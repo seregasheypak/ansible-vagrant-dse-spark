@@ -1,0 +1,22 @@
+# Global parameters
+##
+
+# Cluster name
+site_name: spark_dse_cluster
+
+# IPv4 maximum transmission unit, 9216 is the maximum for Intel/Cisco hardware
+mtu: 9216
+
+# Custom configuration
+# This will install additionnal services, update files
+update_hosts: True
+install_oracle_jdk: True
+
+#Link is hardcoded. See here: roles/spark_configuration/tasks/main.yml
+spark:
+  version: 1.2.0
+  workermemory: 1g
+  drivermemory: 1g
+  daemonmemory: 1g
+  location: /usr/lib/spark
+  webui: 8080

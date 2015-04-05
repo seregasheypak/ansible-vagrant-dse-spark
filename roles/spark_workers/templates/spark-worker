@@ -1,0 +1,84 @@
+#!/usr/bin/env bash
+#
+# Start daemon script for spark worker
+#
+# Author: Anthony Corbacho <corbacho.anthony@gmail.com>
+
+. /lib/lsb/init-functions
+
+# Env variables
+NAME="spark-workers"
+SPARK_WORKER_BIN="{{ spark.location }}/bin/spark-class"
+SPARK_WORKER_OPTIONS="org.apache.spark.deploy.worker.Worker spark://{% for host in groups['sparkmasters'] %}{{ host }}:7077{% if not loop.last %},{% endif %}{% endfor %}"
+PIDFILE="/var/run/${NAME}.pid"
+
+find_spark_process() {
+  local pid
+
+  if [[ -f "${PIDFILE}" ]]; then
+    pid="`cat ${PIDFILE}`"
+    if [[ -z "`ps axf | grep ${pid} | grep -v grep`" ]]; then
+      log_failure_msg "${NAME} running but proccess is dead"
+    else
+      log_success_msg "${NAME} is running"
+    fi
+  else
+    log_failure_msg "${NAME} is not running"
+  fi
+}
+
+start() {
+  local pid
+
+  if [[ -f "${PIDFILE}" ]]; then
+    log_failure_msg "${NAME} is running"
+     exit 1;
+  fi
+  pid="`${SPARK_WORKER_BIN} ${SPARK_WORKER_OPTIONS} > /dev/null 2>&1 & echo $!`"
+  if [[ -z "${pid}" ]]; then
+    log_failure_msg "${NAME}"
+  else
+    log_success_msg "${NAME}"
+    echo ${pid} > ${PIDFILE}
+  fi
+}
+
+stop() {
+  local pid
+
+  if [[ ! -f "${PIDFILE}" ]]; then
+    log_failure_msg "${NAME} is not running"
+  fi
+  pid="`cat ${PIDFILE}`"
+  if [[ -z "${pid}" ]]; then
+    log_failure_msg "${NAME} is not running"
+  else
+    kill -9 ${pid}
+    rm -f ${PIDFILE}
+    log_success_msg "${NAME}"
+  fi
+}
+
+case "${1}" in
+  start)
+    start
+    ;;
+  stop)
+    stop
+    ;;
+  reload)
+    stop
+    start
+    ;;
+  restart)
+    stop
+    start
+    ;;
+  status)
+    find_spark_process
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|restart|reload|status}"
+esac
+
+exit 0

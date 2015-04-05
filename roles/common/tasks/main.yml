@@ -1,0 +1,56 @@
+---
+# file: roles/common/tasks/main.yml
+
+
+#- name: Display hostvars
+#  debug: var=hostvars
+#
+#- name: Display all variables/facts known for a host using hostvars[inventory_hostname]
+#  debug: var=hostvars[inventory_hostname]
+
+- name: set locale => UTF-8
+  shell: locale-gen en_US.UTF-8
+
+- name: Doing apt-get update
+  shell: apt-get update
+
+- name: install commonly used packages
+  apt: pkg={{ item }} state=installed update-cache=yes
+  with_items:
+    - curl
+    - wget
+    - ntp
+    - git
+    - vim
+    - libssl0.9.8
+    - libjna-java
+    - sysstat
+    - python-software-properties
+
+- name: create the hosts file for all machines
+  template: backup=yes src=hosts dest=/etc/hosts
+  when: update_hosts
+
+- name: remove OpenJDK
+  apt: pkg={{ item }} state=removed
+  with_items: 
+   - java
+   - jdk
+
+- name: adding oracle java repository
+  shell: add-apt-repository -y ppa:webupd8team/java
+
+- name: adding dse repo
+  shell: echo "deb http://datastaxrepo_gmail.com:utJVKEg4lKeaWTX@debian.datastax.com/enterprise stable main" | sudo tee -a /etc/apt/sources.list.d/datastax.sources.list
+
+- name: adding repo key
+  shell: curl -L https://debian.datastax.com/debian/repo_key | sudo apt-key add -
+
+- name: updating machine
+  shell: apt-get update
+
+- name: preparing for java installation
+  shell: /bin/echo debconf shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
+
+- name: installing oracle java
+  shell: DEBIAN_FRONTEND=noninteractive apt-get -y install oracle-java7-installer oracle-java7-set-default
