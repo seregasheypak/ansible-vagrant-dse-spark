@@ -12,7 +12,7 @@
   roles:
     - dse-install
 
-# Free opscenter
+# OpsCenter
 - hosts: opscenter
   user: vagrant
   sudo: True

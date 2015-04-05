@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
     node3.vm.network  "private_network", ip: "192.168.56.30"
   end
 
-  config.vm.define "dsenode03" do |node4|
+  config.vm.define "dsenode04" do |node4|
     node4.vm.box = "precise64"
     node4.vm.hostname = "dsenode04"
     node4.vm.network  "private_network", ip: "192.168.56.40"
