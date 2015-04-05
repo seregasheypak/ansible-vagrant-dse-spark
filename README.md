@@ -48,6 +48,11 @@ Run script to download Apache Spark locally. Then Ansible is going to upload bin
 vagrant up
 ```
 ## start spark
-Run ansible with spark tags in order to start spark services in proper order
-ANSIBLE_ARGS='--tags=start-spark-master' vagrant provision
+Run Ansible with spark related tags in order to start spark services in proper order
+```shell
+#Restart spark-master service
+ANSIBLE_ARGS='--tags=start-spark-master' vagrant provision dsenode01
+
+#restart spark-worker services
 ANSIBLE_ARGS='--tags=start-spark-worker' vagrant provision
+```
