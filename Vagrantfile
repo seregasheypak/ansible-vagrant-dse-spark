@@ -35,7 +35,7 @@ Vagrant.configure("2") do |config|
   end
 
    config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "deploy.yml"
+    ansible.playbook = "playbook.yml"
     ansible.groups = {
         "dse" => ["dsenode01","dsenode02","dsenode03"],
         "opscenter" => ["dsenode04"],
