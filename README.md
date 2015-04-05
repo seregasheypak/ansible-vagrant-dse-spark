@@ -2,11 +2,11 @@
 
 ## Installed services location
 | Node name      | IP |spark-master|spark-worker  | dse  | opscenter|
-| :------------- |:----------------| :|   :|  :|   :|
-| dsenode01      | 192.168.56.10| + | + | + |    |
-| dsenode02      | 192.168.56.20|   | + | + |    |
-| dsenode03      | 192.168.56.30|   | + | + |    |
-| dsenode04      | 192.168.56.30|   |   |   |   +|
+|:-------------  |:--------------- |:------------ |:---- | :------- |
+| dsenode01      | 192.168.56.10   | +            | +    |          |
+| dsenode02      | 192.168.56.20   |              | +    |          |
+| dsenode03      | 192.168.56.30   |              | +    |          |
+| dsenode04      | 192.168.56.30   |              |      | +        | 
 
 ## UI access
 |Service name|url|
