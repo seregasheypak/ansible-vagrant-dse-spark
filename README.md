@@ -50,7 +50,7 @@ vagrant up
 ```
 ## start spark
 Run Ansible with spark related tags in order to start spark services in proper order. Vagrant and Ansible have weird ad-hoc integration, 
-hope it would be easier to run adhoc Ansible for vagrant later. I prepared rwo agly scripts for u.
+hope it would be easier to run adhoc Ansible for vagrant later. I prepared two agly scripts for u.
 ```shell
 #restart spark-master 
 chmod +x start-spark-master.sh
