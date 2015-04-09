@@ -50,7 +50,7 @@ vagrant up
 ```
 ## start spark
 Run Ansible with spark related tags in order to start spark services in proper order. Vagrant and Ansible have weird ad-hoc integration, 
-hope it would be easier to run adhoc Ansible for vagrant later. I prepared rwo agly scripts for u.
+hope it would be easier to run adhoc Ansible for vagrant later. I prepared two agly scripts for u.
 ```shell
 #restart spark-master 
 chmod +x start-spark-master.sh
@@ -67,3 +67,13 @@ You can access them using ip 192.168.56.(10,20,30,40) or names dsenode0(1,2,3,4)
 * you can do: ```shell vagrant ssh dsenode01``` from project root
 * ssh ```shellvagrant@192.168.56.10``` using password "vagrant"
 * private key for each VM stored here: ```vagrant/machines/dsenode01/virtualbox/private_key``` each VM has it's own private key due to Vagrant 1.7 changes. It was sharing key previously.
+
+### Add DSE nodes to OpsCenter
+**Next time I'll provision nodes with dse-agent packages, we can automate this part**
+* Add existing cluster using top right button 
+![Add existing clsuter](https://github.com/seregasheypak/ansible-vagrant-dse-spark/blob/master/.wiki_resources/01_new_cluster.png)
+* Choose manage exsiting
+![Manage existing](https://github.com/seregasheypak/ansible-vagrant-dse-spark/blob/master/.wiki_resources/02_manage_existing.png)
+* Enter any DSE node ip address
+![DSE node address](https://github.com/seregasheypak/ansible-vagrant-dse-spark/blob/master/.wiki_resources/03_add_cluster.png)
+* OpsCenter would ask you for credientials to install. Type ```vagrant``` as user and ```vagrant``` as password. Wait a little and you get agents on each nodes installed using user vagrant which has passwordless sudo.
