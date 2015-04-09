@@ -63,7 +63,7 @@ chmod +x start-spark-master.sh
 Feel free to suggest how-to fix this nighmare
 
 ### Access VMs
-You can access them using ip 192.168.56.[10,20,30,40] or names dsenode0[1,2,3,4] (check your /etc/hosts file before).
+You can access them using ip 192.168.56.(10,20,30,40) or names dsenode0(1,2,3,4) (check your /etc/hosts file before).
 * you can do: ```shell vagrant ssh dsenode01``` from project root
 * ssh ```shellvagrant@192.168.56.10``` using password "vagrant"
 * private key for each VM stored here: ```vagrant/machines/dsenode01/virtualbox/private_key``` each VM has it's own private key due to Vagrant 1.7 changes. It was sharing key previously.
