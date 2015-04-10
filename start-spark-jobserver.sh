@@ -4,4 +4,4 @@ ansible-playbook \
 --private-key=.vagrant/machines/dsenode01/virtualbox/private_key \
 -u vagrant \
 playbook.yml \
---tags "start-spark-master"
+--tags "start-spark-jobserver"
