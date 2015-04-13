@@ -40,6 +40,12 @@
   tags:
     - spark
 
+- name: create log direcory
+  file: path=/var/log/jobserver state=directory mode=777
+  tags:
+      - spark
+      - start-spark-jobserver
+
 - name: start jobserver
   service: name=spark-jobserver state=restarted
   tags:
