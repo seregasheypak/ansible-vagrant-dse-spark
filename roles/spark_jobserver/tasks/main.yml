@@ -1,0 +1,48 @@
+---
+# file: roles/spark/tasks/main.yml
+
+- name: create spark-jobserver directory
+  file: path={{ item }} state=directory
+  with_items: jobserver.location
+
+- name: cleanup tmp for sparkjobserver distro
+  shell: rm -rf /tmp/sparkjobserver*
+
+- name: cleanup target dir for jobserver
+  shell: rm -rf {{ jobserver.location }}
+
+- name: create target dir for jobserver
+  shell: mkdir -p {{ jobserver.location }}
+
+- name: create conf dir for jobserver
+  shell: mkdir -p {{ jobserver.location }}/conf
+
+- name: upload spark jobserver from local host, don\'t forget to build jobserver before provisioning
+  copy: src=jobserver_distro/spark-job-server.tar dest=/tmp owner=vagrant group=vagrant mode=0777
+
+- name: extract jobserver from uploaded acrhive
+  shell: chdir=/tmp tar zxvf /tmp/spark-job-server.tar
+
+- name: copy extracted jobserver files to target
+  shell: cp -rf /tmp/jobserver/* {{ jobserver.location }}
+
+- name: copy spark-env.sh
+  template: src=spark-env.sh dest={{ jobserver.location }}/conf/spark-env.sh
+
+- name: copy settings.sh
+  template: src=settings.sh dest={{ jobserver.location }}/settings.sh
+
+- name: copy jobserver.conf
+  template: src=jobserver.conf dest={{ jobserver.location }}/jobserver.conf
+
+- name: copy init file
+  template: src=spark-jobserver dest=/etc/init.d/spark-jobserver owner=root group=root mode=755
+  tags:
+    - spark
+
+- name: start jobserver
+  service: name=spark-jobserver state=restarted
+  tags:
+    - spark
+    - start-spark-jobserver
+

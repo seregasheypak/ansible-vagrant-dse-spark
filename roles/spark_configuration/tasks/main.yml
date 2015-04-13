@@ -14,7 +14,7 @@
 - name: create target dir for spark
   shell: mkdir -p {{ spark.location }}
 
-- name: upload spark disto from local host, don't forget to run download spark locally once before provisioning
+- name: upload spark disto from local host, don\'t forget to run download spark locally once before provisioning
   copy: src=spark-distro/spark-1.2.0-bin-hadoop2.4.tgz dest=/tmp owner=vagrant group=vagrant mode=0777
 
 - name: extract spark from uploaded acrhive
