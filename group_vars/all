@@ -25,3 +25,4 @@ jobserver:
   version: 0.5.0
   location: /usr/lib/spark-jobserver
   webui: 8090
+  log: /var/log/jobserver

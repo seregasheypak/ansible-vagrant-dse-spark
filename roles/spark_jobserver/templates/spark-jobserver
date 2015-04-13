@@ -10,6 +10,7 @@
 NAME="spark-jobserver"
 SPARK_JOBSERVER_BIN="{{ jobserver.location }}/server_start.sh"
 SPARK_JOBSERVER_BIN_STOP="{{ jobserver.location }}/server_stop.sh"
+SPARK_JOBSERVER_LOG="{{ jobserver.log }}"
 SPARK_JOBSERVER_OPTIONS=" "
 PIDFILE="/var/run/${NAME}.pid"
 
@@ -33,7 +34,7 @@ start() {
   if [[ -f "${PIDFILE}" ]]; then
     log_failure_msg "${NAME} is running"
   fi
-  pid="`${SPARK_JOBSERVER_BIN} ${SPARK_JOBSERVER_OPTIONS} > /dev/null 2>&1 & echo $!`"
+  pid="`${SPARK_JOBSERVER_BIN} ${SPARK_JOBSERVER_OPTIONS} > ${SPARK_JOBSERVER_LOG} 2>&1 & echo $!`"
   if [[ -z "${pid}" ]]; then
     log_failure_msg "${NAME}"
   else

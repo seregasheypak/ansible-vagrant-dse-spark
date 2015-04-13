@@ -41,7 +41,7 @@
     - spark
 
 - name: create log direcory
-  file: path=/var/log/jobserver state=directory mode=777
+  file: path={{ jobserver.log }} state=directory mode=777
   tags:
       - spark
       - start-spark-jobserver
