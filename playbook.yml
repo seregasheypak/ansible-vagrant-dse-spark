@@ -25,6 +25,7 @@
   sudo: True
   roles:
     - spark_master
+    - spark_history
 
 - hosts: sparkworkers
   user: vagrant
