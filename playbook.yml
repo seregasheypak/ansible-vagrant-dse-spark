@@ -33,3 +33,10 @@
   roles:
     - spark_workers
 
+
+# Add Sparkworker
+- hosts: sparkjobserver
+  user: vagrant
+  sudo: True
+  roles:
+    - spark_jobserver

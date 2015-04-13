@@ -7,7 +7,7 @@ dsenode04 ansible_ssh_user=vagrant ansible_ssh_pass=vagrant
 
 [dse]
 dsenode01
-dsenode03
+dsenode02
 dsenode03
 
 [opscenter]
@@ -18,5 +18,8 @@ dsenode01
 
 [sparkworkers]
 dsenode01
+dsenode02
 dsenode03
-dsenode03
+
+[sparkjobserver]
+dsenode02
