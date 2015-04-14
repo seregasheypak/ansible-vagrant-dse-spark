@@ -1,5 +1,5 @@
 #!/usr/bin/env bash                                                                                                                                                            
-
+export SPARK_HOME=/usr/lib/spark
 export DEFAULT_HADOOP_HOME=/usr/lib/hadoop
 
 export SPARK_DAEMON_JAVA_OPTS=""
