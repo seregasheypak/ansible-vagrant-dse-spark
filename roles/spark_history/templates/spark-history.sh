@@ -33,7 +33,7 @@ start() {
   if [[ -f "${PIDFILE}" ]]; then
     log_failure_msg "${NAME} is running"
   fi
-  pid="`${SPARK_HISTORY_BIN} ${SPARK_HISTORY_OPTIONS} > /dev/null 2>&1 & echo $!`"
+  pid="`${SPARK_HISTORY_BIN} ${SPARK_HISTORY_OPTIONS} > {{ historyserver.serverLogLocation }}/{{historyserver.serverLogFile}} 2>&1 & echo $!`"
   if [[ -z "${pid}" ]]; then
     log_failure_msg "${NAME}"
   else
