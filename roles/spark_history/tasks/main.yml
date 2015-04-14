@@ -2,13 +2,13 @@
 # file: roles/spark/tasks/main.yml
 
 - name: copy init file
-  template: src=spark-history dest=/etc/init.d/spark-history owner=root group=root mode=755
+  template: src=spark-history.sh dest=/etc/init.d/spark-history.sh owner=root group=root mode=755
   tags:
     - spark
     - start-spark-history
 
 - name: create log direcory
-  file: path=/tmp/spark-events state=directory mode=777
+  file: path={{spark.eventLog}} state=directory mode=777
   tags:
       - spark
       - start-spark-history

@@ -20,6 +20,7 @@ spark:
   daemonmemory: 1g
   location: /usr/lib/spark
   webui: 8080
+  eventLog: /var/log/spark/applicationHistory
 
 jobserver:
   version: 0.5.0
