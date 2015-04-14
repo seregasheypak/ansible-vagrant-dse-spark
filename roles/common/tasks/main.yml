@@ -12,10 +12,14 @@
   shell: locale-gen en_US.UTF-8
 
 #http://askubuntu.com/questions/440649/how-to-disable-ipv6-in-ubuntu-14-04
-- name: disable ipv6
-  sysctl: name=net.ipv6.conf.all.disable_ipv6 value=1 state=present checks=both
-  sysctl: name=net.ipv6.conf.default.disable_ipv6 value=1 state=present checks=both
-  sysctl: name=net.ipv6.conf.lo.disable_ipv6 value=1 state=present checks=both
+- name: all disable_ipv6
+  sysctl: name=net.ipv6.conf.all.disable_ipv6 value=1 state=present reload=yes
+
+- name: default disable_ipv6
+  sysctl: name=net.ipv6.conf.default.disable_ipv6 value=1 state=present reload=yes
+
+- name: lo disable_ipv6
+  sysctl: name=net.ipv6.conf.lo.disable_ipv6 value=1 state=present reload=yes
 
 - name: Doing apt-get update
   shell: apt-get update
