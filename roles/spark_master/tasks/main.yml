@@ -2,7 +2,7 @@
 # file: roles/spark/tasks/main.yml
 
 - name: copy init file
-  template: src=spark-master.sh dest=/etc/init.d/spark-master.sh owner=root group=root mode=755
+  template: src=spark-master.sh dest=/etc/init.d/spark-master owner=root group=root mode=755
   tags:
     - spark
 
