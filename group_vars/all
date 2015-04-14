@@ -27,3 +27,6 @@ jobserver:
   location: /usr/lib/spark-jobserver
   webui: 8090
   log: /var/log/jobserver
+
+historyserver:
+  serverLogLocation: /var/log/spark-history-server/spark-history-server.log
