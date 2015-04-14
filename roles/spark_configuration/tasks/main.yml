@@ -5,6 +5,12 @@
   file: path={{ item }} state=directory
   with_items: spark.location
 
+- name: create log direcory
+  file: path={{spark.eventLog}} state=directory mode=777
+  tags:
+      - spark
+      - start-spark-history
+
 - name: cleanup tmp for spark distro
   shell: rm -rf /tmp/spark*
 
@@ -25,3 +31,12 @@
 
 - name: copy spark-env.sh
   template: src=spark-env.sh dest={{ spark.location }}/conf/spark-env.sh
+
+- name: create conf for spark
+  file: path=/etc/spark/conf state=directory
+
+- name: copy spark-defaults.conf to /etc/spark/conf
+  template: src=spark-defaults.conf dest=/etc/spark/conf/spark-defaults.conf
+
+- name: copy spark-defaults.conf to spark.location
+  template: src=spark-defaults.conf dest={{ spark.location }}/conf/spark-defaults.conf
