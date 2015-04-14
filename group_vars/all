@@ -29,4 +29,5 @@ jobserver:
   log: /var/log/jobserver
 
 historyserver:
-  serverLogLocation: /var/log/spark-history-server/spark-history-server.log
+  serverLogLocation: /var/log/spark-history-server
+  serverLogFile: spark-history-server.log

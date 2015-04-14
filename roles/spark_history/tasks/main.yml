@@ -7,6 +7,9 @@
     - spark
     - start-spark-history
 
+- name: create spark-history server log dir
+  file: path={{ historyserver.serverLogLocation }} state=directory
+
 - name: start spark history
   service: name=spark-history state=restarted
   tags:
