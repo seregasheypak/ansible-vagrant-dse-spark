@@ -10,7 +10,7 @@
 NAME="spark-history"
 SPARK_HISTORY_BIN="{{ spark.location }}/sbin/start-history-server.sh"
 SPARK_HISTORY_BIN_STOP="{{ spark.location }}/sbin/start-history-server.sh"
-SPARK_HISTORY_OPTS="-Dspark.history.fs.logDirectory={{spark.eventLog}} -Dspark.eventLog.enabled=true"
+export SPARK_HISTORY_OPTS="-Dspark.history.fs.logDirectory={{spark.eventLog}} -Dspark.eventLog.enabled=true"
 PIDFILE="/var/run/${NAME}.pid"
 
 find_spark_process() {
@@ -35,7 +35,6 @@ start() {
   fi
 # pid="`${SPARK_HISTORY_BIN} ${SPARK_HISTORY_OPTIONS} > {{ historyserver.serverLogLocation }} 2>&1 & echo $!`"
   echo "exporting SPARK_HISTORY_OPTS=" ${SPARK_HISTORY_OPTS}
-  export SPARK_HISTORY_OPTS = ${SPARK_HISTORY_OPTS}
   pid="`${SPARK_HISTORY_BIN} > {{ historyserver.serverLogLocation }} 2>&1 & echo $!`"
   if [[ -z "${pid}" ]]; then
     log_failure_msg "${NAME}"
