@@ -7,10 +7,10 @@
 . /lib/lsb/init-functions
 
 # Env variables
-NAME="spark-master"
+NAME="spark-history"
 SPARK_HISTORY_BIN="{{ spark.location }}/sbin/start-history-server.sh"
 SPARK_HISTORY_BIN_STOP="{{ spark.location }}/sbin/start-history-server.sh"
-SPARK_HISTORY_OPTIONS=" "
+SPARK_HISTORY_OPTS="-Dspark.history.fs.logDirectory={{spark.eventLog}} -Dspark.eventLog.enabled=true"
 PIDFILE="/var/run/${NAME}.pid"
 
 find_spark_process() {
@@ -33,7 +33,10 @@ start() {
   if [[ -f "${PIDFILE}" ]]; then
     log_failure_msg "${NAME} is running"
   fi
-  pid="`${SPARK_HISTORY_BIN} ${SPARK_HISTORY_OPTIONS} > {{ historyserver.serverLogLocation }}/{{historyserver.serverLogFile}} 2>&1 & echo $!`"
+# pid="`${SPARK_HISTORY_BIN} ${SPARK_HISTORY_OPTIONS} > {{ historyserver.serverLogLocation }} 2>&1 & echo $!`"
+  echo "exporting SPARK_HISTORY_OPTS=" ${SPARK_HISTORY_OPTS}
+  export SPARK_HISTORY_OPTS = ${SPARK_HISTORY_OPTS}
+  pid="`${SPARK_HISTORY_BIN} > {{ historyserver.serverLogLocation }} 2>&1 & echo $!`"
   if [[ -z "${pid}" ]]; then
     log_failure_msg "${NAME}"
   else
