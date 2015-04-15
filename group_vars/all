@@ -8,16 +8,17 @@ site_name: spark_dse_cluster
 mtu: 9216
 
 # Custom configuration
-# This will install additionnal services, update files
+# This will install additional services, update files
 update_hosts: True
 install_oracle_jdk: True
 
 #Link is hardcoded. See here: roles/spark_configuration/tasks/main.yml
 spark:
   version: 1.2.0
-  workermemory: 1g
-  drivermemory: 1g
-  daemonmemory: 1g
+  workermemory: 512m
+  drivermemory: 256m
+  daemonmemory: 512m
+  executormemory: 512m
   location: /usr/lib/spark
   webui: 8080
   eventLog: /var/log/spark/applicationHistory

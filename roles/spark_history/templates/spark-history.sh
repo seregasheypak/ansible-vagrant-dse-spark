@@ -33,8 +33,6 @@ start() {
   if [[ -f "${PIDFILE}" ]]; then
     log_failure_msg "${NAME} is running"
   fi
-# pid="`${SPARK_HISTORY_BIN} ${SPARK_HISTORY_OPTIONS} > {{ historyserver.serverLogLocation }} 2>&1 & echo $!`"
-  echo "exporting SPARK_HISTORY_OPTS=" ${SPARK_HISTORY_OPTS}
   pid="`${SPARK_HISTORY_BIN} > {{ historyserver.serverLogLocation }} 2>&1 & echo $!`"
   if [[ -z "${pid}" ]]; then
     log_failure_msg "${NAME}"
