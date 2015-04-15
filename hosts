@@ -23,3 +23,6 @@ dsenode03
 
 [sparkjobserver]
 dsenode02
+
+[graphite]
+dsenode03

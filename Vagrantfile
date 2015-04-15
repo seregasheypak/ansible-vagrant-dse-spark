@@ -54,7 +54,8 @@ Vagrant.configure("2") do |config|
         "opscenter" => ["dsenode04"],
         "sparkmasters" => ["dsenode01"],
         "sparkworkers" => ["dsenode01","dsenode02","dsenode03"],
-        "sparkjobserver" => ["dsenode02"]
+        "sparkjobserver" => ["dsenode02"],
+        "graphite" => ["dsenode03"]
     }
   end
 

@@ -19,13 +19,14 @@
   roles:
     - opscenter
 
-# Add Spark
 - hosts: sparkmasters
   user: vagrant
   sudo: True
   roles:
     - spark_master
     - spark_history
+- hosts: graphite
+  roles:
 
 - hosts: sparkworkers
   user: vagrant
@@ -33,10 +34,16 @@
   roles:
     - spark_workers
 
-
-# Add Sparkworker
 - hosts: sparkjobserver
   user: vagrant
   sudo: True
   roles:
     - spark_jobserver
+
+# Graphite stuff
+#https://github.com/jsmartin/ansible-graphite
+- hosts: graphite
+  user: vagrant
+  sudo: True
+  roles:
+    - { role: ansible-graphite, tags: [ 'install-graphite'] }
