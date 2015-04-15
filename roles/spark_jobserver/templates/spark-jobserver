@@ -10,7 +10,7 @@
 NAME="spark-jobserver"
 SPARK_JOBSERVER_BIN="{{ jobserver.location }}/server_start.sh"
 SPARK_JOBSERVER_BIN_STOP="{{ jobserver.location }}/server_stop.sh"
-SPARK_JOBSERVER_LOG="{{ jobserver.log }}"
+SPARK_JOBSERVER_LOG="{{ jobserver.log }}/jobserver.log"
 SPARK_JOBSERVER_OPTIONS=" "
 PIDFILE="/var/run/${NAME}.pid"
 
