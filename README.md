@@ -6,6 +6,7 @@
     * OpsCenter 5.1
     * Spark 1.2 (with History server)
     * JobServer
+    * Graphite
 * Tweaks
     * updates your local /etc/hosts using vagrant-hostsupdater plugin
     * Caches installed packages to reuse them using vagrant-cachier plugin
@@ -25,6 +26,7 @@
 | [spark-master](http://dsenode01:8080/)|
 | [history-server](http://dsenode01:18080/)|
 | [job-server](http://dsenode02:8090/)|
+| [graphite](http://dsenode03) admin:admin
 
 ## Reqirements
 * [virtualbox](https://www.virtualbox.org/) 4.3.10 or greater.
