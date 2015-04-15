@@ -35,6 +35,9 @@
 - name: copy jobserver.conf
   template: src=jobserver.conf dest={{ jobserver.location }}/jobserver.conf
 
+- name: copy server_start.sh
+  template: src=server_start.sh dest={{ jobserver.location }}/server_start.sh
+
 - name: copy init file
   template: src=spark-jobserver dest=/etc/init.d/spark-jobserver owner=root group=root mode=755
   tags:
