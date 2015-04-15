@@ -4,24 +4,29 @@
 * Installs 
     * DSE 4.6
     * OpsCenter 5.1
-    * Spark 1.2
+    * Spark 1.2 (with History server)
+    * JobServer
+    * Graphite
 * Tweaks
     * updates your local /etc/hosts using vagrant-hostsupdater plugin
     * Caches installed packages to reuse them using vagrant-cachier plugin
 
 ## Installed services location
-| Node name      | IP              |spark-master  |spark-worker  | dse  | opscenter|
-|:---------------|:----------------|:-------------|:-------------|:-----|:---------|
-| dsenode01      | 192.168.56.10   | +            | +            |  +   |          |
-| dsenode02      | 192.168.56.20   |              | +            |  +   |          |
-| dsenode03      | 192.168.56.30   |              | +            |  +   |          |
-| dsenode04      | 192.168.56.30   |              |              |      | +        |
+| Node name      | IP              |spark-master  |spark-worker  | dse  | opscenter|HistoryServer|JobServer    |
+|:---------------|:----------------|:-------------|:-------------|:-----|:---------|:------------|:------------|
+| dsenode01      | 192.168.56.10   | +            | +            |  +   |          | +           |             |
+| dsenode02      | 192.168.56.20   |              | +            |  +   |          |             | +           |
+| dsenode03      | 192.168.56.30   |              | +            |  +   |          |             |             |
+| dsenode04      | 192.168.56.30   |              |              |      | +        |             |             |
 
 ## UI access
-|Service name|url|
-|:-----------|:--|
-|opscenter| http://dsenode04:8888/|
-|spark-master| http://dsenode01:8080/|
+|Service name| 
+|:-----------| 
+| [opscenter](http://dsenode04:8888/)|
+| [spark-master](http://dsenode01:8080/)|
+| [history-server](http://dsenode01:18080/)|
+| [job-server](http://dsenode02:8090/)|
+| [graphite](http://dsenode03) admin:admin
 
 ## Reqirements
 * [virtualbox](https://www.virtualbox.org/) 4.3.10 or greater.
