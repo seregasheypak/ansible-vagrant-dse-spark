@@ -40,3 +40,8 @@
 
 - name: copy spark-defaults.conf to spark.location
   template: src=spark-defaults.conf dest={{ spark.location }}/conf/spark-defaults.conf
+
+- name: copy metrics.properties
+  template: src=metrics.properties dest={{ spark.location }}/conf/metrics.properties
+  tags:
+    - spark-metrics
