@@ -1,6 +1,6 @@
 ---
 grafana_owner: www-data
-grafana_version: 1.9
+grafana_version: 1.9.0
 #grafana_git_url: https://github.com/torkelo/grafana.git
 #grafana_git_branch: master
 grafana_root_path: /var/www/grafana
