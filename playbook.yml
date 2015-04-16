@@ -47,3 +47,10 @@
   sudo: True
   roles:
     - { role: ansible-graphite, tags: [ 'install-graphite'] }
+
+- hosts: grafana
+  user: vagrant
+  sudo: True
+  roles:
+    - { role: ansible-role-nginx, tags: [ 'install-nginx'] }
+    - { role: ansible-grafana, tags: [ 'install-grafana'] }
