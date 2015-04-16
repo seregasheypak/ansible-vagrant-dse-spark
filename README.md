@@ -6,7 +6,9 @@
     * OpsCenter 5.1
     * Spark 1.2 (with History server)
     * JobServer
-    * Graphite
+    * graphite-carbon                 
+    * graphite-web
+
 * Tweaks
     * updates your local /etc/hosts using vagrant-hostsupdater plugin
     * Caches installed packages to reuse them using vagrant-cachier plugin
