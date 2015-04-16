@@ -40,8 +40,6 @@
   roles:
     - spark_jobserver
 
-# Graphite stuff
-#https://github.com/jsmartin/ansible-graphite
 - hosts: graphite
   user: vagrant
   sudo: True
