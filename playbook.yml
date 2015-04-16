@@ -44,10 +44,10 @@
   user: vagrant
   sudo: True
   roles:
-    - { role: ansible-graphite, tags: [ 'install-graphite'] }
+    - { role: install-graphite, tags: [ 'install-graphite'] }
 
 - hosts: grafana
   user: vagrant
   sudo: True
   roles:
-     - {role: ansible-grafana-package, tags: ['install-ansible-grafana-package']}
+     - {role: install-grafana, tags: ['install-grafana']}
