@@ -52,5 +52,6 @@
   user: vagrant
   sudo: True
   roles:
-    - { role: ansible-role-nginx, tags: [ 'install-nginx'] }
-    - { role: ansible-grafana, tags: [ 'install-grafana'] }
+     - {role: ansible-grafana-package, tags: ['install-ansible-grafana-package']}
+#    - { role: ansible-role-nginx, tags: [ 'install-nginx'] }
+#    - { role: ansible-grafana, tags: [ 'install-grafana'] }

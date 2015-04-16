@@ -1,0 +1,15 @@
+- name: adding repo grafana
+  shell: echo "deb https://packagecloud.io/grafana/testing/debian/ wheezy main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
+
+- name: adding grafana repo key
+  shell: curl https://packagecloud.io/gpg.key | sudo apt-key add -
+
+- name: updating machine
+  shell: apt-get update
+
+- name: installing grafana
+  apt: pkg=grafana state=installed update-cache=yes
+  register: opscenterd
+
+- name: starting grafana-server
+  service: name=grafana-server enabled=yes state=started
