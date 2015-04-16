@@ -8,11 +8,11 @@ grafana_default_route: /dashboard/file/default.json
 grafana_index: grafana-dash
 
 grafana_elasticsearch_url: http://127.0.0.1:9200
-grafana_graphite_url: http://{{graphite.host}}:8080
+grafana_graphite_url: http://192.168.56.30
 
 grafana_nginx_config_name: grafana.conf
 grafana_nginx_config_path: /etc/nginx/sites-enabled
-grafana_nginx_listen: {{grafana.listenAddress}}
+grafana_nginx_listen: 192.168.56.30
 grafana_nginx_server_name: dsenode03
 grafana_nginx_access_log: /var/log/nginx/grafana_access.log
 grafana_nginx_error_log: /var/log/nginx/grafana_error.log
