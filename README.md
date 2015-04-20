@@ -17,8 +17,8 @@
 ## Installed services location
 | Node name      | IP              |spark-master  |spark-worker  | dse  | opscenter|HistoryServer|JobServer    |
 |:---------------|:----------------|:-------------|:-------------|:-----|:---------|:------------|:------------|
-| dsenode01      | 192.168.56.10   | +            | +            |  +   |          | +           |             |
-| dsenode02      | 192.168.56.20   |              | +            |  +   |          |             | +           |
+| dsenode01      | 192.168.56.10   | +            | +            |  +   |          |             |             |
+| dsenode02      | 192.168.56.20   |              | +            |  +   |          | +           | +           |
 | dsenode03      | 192.168.56.30   |              | +            |  +   |          |             |             |
 | dsenode04      | 192.168.56.30   |              |              |      | +        |             |             |
 
@@ -27,7 +27,7 @@
 |:-----------| 
 | [opscenter](http://dsenode04:8888/)|
 | [spark-master](http://dsenode01:8080/)|
-| [history-server](http://dsenode01:18080/)|
+| [history-server](http://dsenode02:18080/)|
 | [job-server](http://dsenode02:8090/)|
 | [graphite](http://dsenode03) admin:admin |
 | [grafana](http://dsenode03:3000) admin:admin|
