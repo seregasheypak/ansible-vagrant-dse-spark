@@ -20,6 +20,8 @@
     - opscenter
 
 - hosts: sparkmasters
+  user: vagrant
+  sudo: True
   roles:
     - spark_master
 
