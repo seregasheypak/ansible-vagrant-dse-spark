@@ -8,6 +8,7 @@
     * JobServer
     * graphite-carbon                 
     * graphite-web
+    * grafana
 
 * Tweaks
     * updates your local /etc/hosts using vagrant-hostsupdater plugin

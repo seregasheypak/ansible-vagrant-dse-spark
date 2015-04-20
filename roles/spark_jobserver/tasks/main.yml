@@ -34,6 +34,8 @@
 
 - name: copy jobserver.conf
   template: src=jobserver.conf dest={{ jobserver.location }}/jobserver.conf
+  tags:
+     - start-spark-jobserver
 
 - name: copy server_start.sh
   template: src=server_start.sh dest={{ jobserver.location }}/server_start.sh
