@@ -28,7 +28,8 @@
 | [spark-master](http://dsenode01:8080/)|
 | [history-server](http://dsenode01:18080/)|
 | [job-server](http://dsenode02:8090/)|
-| [graphite](http://dsenode03) admin:admin
+| [graphite](http://dsenode03) admin:admin |
+| [grafana](http://dsenode03:3000) admin:admin|
 
 ## Reqirements
 * [virtualbox](https://www.virtualbox.org/) 4.3.10 or greater.
