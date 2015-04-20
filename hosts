@@ -29,3 +29,6 @@ dsenode03
 
 [grafana]
 dsenode03
+
+[sparkhistory]
+dsenode02

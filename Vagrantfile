@@ -55,6 +55,7 @@ Vagrant.configure("2") do |config|
         "sparkmasters" => ["dsenode01"],
         "sparkworkers" => ["dsenode01","dsenode02","dsenode03"],
         "sparkjobserver" => ["dsenode02"],
+        "sparkhistory" => ["dsenode02"],
         "graphite" => ["dsenode03"],
         "grafana" => ["dsenode03"],
     }

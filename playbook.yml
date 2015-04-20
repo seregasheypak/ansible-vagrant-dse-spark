@@ -20,13 +20,15 @@
     - opscenter
 
 - hosts: sparkmasters
+  roles:
+    - spark_master
+
+
+- hosts: sparkhistory
   user: vagrant
   sudo: True
   roles:
-    - spark_master
-    - spark_history
-- hosts: graphite
-  roles:
+   - spark_history
 
 - hosts: sparkworkers
   user: vagrant
