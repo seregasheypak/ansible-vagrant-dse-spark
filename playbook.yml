@@ -23,18 +23,17 @@
   roles:
     - spark_master
 
+- hosts: sparkworkers
+  user: vagrant
+  sudo: True
+  roles:
+    - spark_workers
 
 - hosts: sparkhistory
   user: vagrant
   sudo: True
   roles:
    - spark_history
-
-- hosts: sparkworkers
-  user: vagrant
-  sudo: True
-  roles:
-    - spark_workers
 
 - hosts: sparkjobserver
   user: vagrant
