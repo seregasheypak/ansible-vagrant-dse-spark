@@ -30,15 +30,18 @@
   template: src=spark-env.sh dest={{ jobserver.location }}/conf/spark-env.sh
 
 - name: copy settings.sh
-  template: src=settings.sh dest={{ jobserver.location }}/settings.sh
+  template: src=settings.sh dest={{ jobserver.location }}/settings.sh owner=root group=root mode=755
 
 - name: copy jobserver.conf
-  template: src=jobserver.conf dest={{ jobserver.location }}/jobserver.conf
+  template: src=jobserver.conf dest={{ jobserver.location }}/jobserver.conf owner=root group=root mode=755
   tags:
      - start-spark-jobserver
 
 - name: copy server_start.sh
-  template: src=server_start.sh dest={{ jobserver.location }}/server_start.sh
+  template: src=server_start.sh dest={{ jobserver.location }}/server_start.sh owner=root group=root mode=755
+
+- name: copy server_stop.sh
+  template: src=server_stop.sh dest={{ jobserver.location }}/server_stop.sh owner=root group=root mode=755
 
 - name: copy init file
   template: src=spark-jobserver.sh dest=/etc/init.d/spark-jobserver owner=root group=root mode=755

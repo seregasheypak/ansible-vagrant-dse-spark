@@ -53,11 +53,14 @@ stop() {
   if [[ -z "${pid}" ]]; then
     log_failure_msg "${NAME} is not running"
   else
-    kill -9 ${pid}
-    rm -f ${PIDFILE}
     $("${SPARK_JOBSERVER_BIN_STOP}")
     log_success_msg "${NAME}"
   fi
+}
+
+restart() {
+  stop
+  start
 }
 
 case "${1}" in
@@ -70,8 +73,11 @@ case "${1}" in
   status)
     find_jobserver_process
     ;;
+  restart)
+    restart
+    ;;
   *)
-    echo "Usage: $0 {start|stop|status}"
+    echo "Usage: $0 {start|stop|restart|status}"
 esac
 
 exit 0
