@@ -39,7 +39,7 @@
   user: vagrant
   sudo: True
   roles:
-    - spark_jobserver
+    - spark-jobserver
 
 - hosts: graphite
   user: vagrant
