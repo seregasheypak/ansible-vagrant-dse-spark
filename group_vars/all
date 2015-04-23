@@ -10,7 +10,6 @@ mtu: 9216
 # Custom configuration
 # This will install additional services, update files
 update_hosts: True
-install_oracle_jdk: True
 
 dse:
   #http://debian.datastax.com/enterprise/pool/
@@ -26,15 +25,14 @@ opsAgent:
 spark:
   # package based installation
   packageVersion: 1.2.0+cdh5.3.3+371-1.cdh5.3.3.p0.8~trusty-cdh5.3.3
-  sparkMaster: dsenode01
-  version: 1.2.0
+
   workermemory: 512m
+  workerCores: 2
   drivermemory: 256m
   daemonmemory: 512m
   executormemory: 512m
   location: /usr/lib/spark
   webui: 8080
-  SPARK_MASTER_PORT: 8080
   eventLog: /var/log/spark/applicationHistory
 
 jobserver:
