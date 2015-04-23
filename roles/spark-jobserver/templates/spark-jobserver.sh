@@ -34,28 +34,16 @@ start() {
   if [[ -f "${PIDFILE}" ]]; then
     log_failure_msg "${NAME} is running"
   fi
-  #pid="`${SPARK_JOBSERVER_BIN} ${SPARK_JOBSERVER_OPTIONS} > ${SPARK_JOBSERVER_LOG} 2>&1 & echo $!`"
   ${SPARK_JOBSERVER_BIN} ${SPARK_JOBSERVER_OPTIONS} > ${SPARK_JOBSERVER_LOG} 2>&1 & 
   pid=$!
-  echo $pid > $PIDFILE
+  echo "jobserver pid: " ${pid}
+  echo "ps-ef"
+  ps -ef | grep jobserver
 
   if [[ -z "${pid}" ]]; then
     log_failure_msg "${NAME}"
   else
     log_success_msg "${NAME}"
-    echo "PID FOR jobserver"
-    cat ${PIDFILE}
-    echo "PID FOR jobserver"
-    echo "ps pid"
-    ps -ef | grep $(cat "$PIDFILE")
-    echo "ps pid"
-
-    echo "ps by name"
-    ps -eg | grep jobserver
-    echo "ps by name"
-
-    echo "We write wrong PID"
-
     echo ${pid} > ${PIDFILE}
   fi
 }
