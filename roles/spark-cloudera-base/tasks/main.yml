@@ -1,0 +1,14 @@
+---
+  - name: get CDH repository package
+    get_url: url=http://archive.cloudera.com/cdh5/one-click-install/trusty/amd64/cdh5-repository_1.0_all.deb dest=~/cdh5-repository_1.0_all.deb
+
+  - name: Install CDH repository package
+    shell: dpkg -i ~/cdh5-repository_1.0_all.deb
+
+  - name: update the repositories
+    shell: apt-get update
+
+  - name: installing spark-core
+    apt: pkg={{item}} state=installed
+    with_items:
+      - spark-core={{ spark.packageVersion }}

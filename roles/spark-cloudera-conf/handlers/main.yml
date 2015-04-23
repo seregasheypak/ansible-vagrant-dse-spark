@@ -1,0 +1,13 @@
+---
+#https://major.io/2014/06/26/install-debian-packages-without-starting-daemons/
+- name: restart spark-master
+  service: name=spark-master state=restarted
+  when: "'sparkmasters' in group_names"
+
+- name: restart spark-worker
+  service: name=spark-worker state=restarted
+  when: "'sparkworkers' in group_names"
+
+- name: restart spark-history-server
+  service: name=spark-history-server state=restarted
+  when: "'sparkhistory' in group_names"

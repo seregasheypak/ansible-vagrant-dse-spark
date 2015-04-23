@@ -5,12 +5,14 @@
   roles:
     - common
 
+# DataStax Enterprise
 - hosts: dse
   user: vagrant
   sudo: True
   roles:
     - dse-install
 
+# OpsCenter
 - hosts: opscenter
   user: vagrant
   sudo: True
@@ -21,19 +23,19 @@
   user: vagrant
   sudo: True
   roles:
-    - spark-cloudera-master
+    - spark_master
 
 - hosts: sparkworkers
   user: vagrant
   sudo: True
   roles:
-    - spark-cloudera-worker
+    - spark_workers
 
 - hosts: sparkhistory
   user: vagrant
   sudo: True
   roles:
-   - spark-cloudera-history
+   - spark_history
 
 - hosts: sparkjobserver
   user: vagrant

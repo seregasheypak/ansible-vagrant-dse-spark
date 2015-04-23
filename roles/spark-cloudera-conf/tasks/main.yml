@@ -1,0 +1,8 @@
+- name: configure spark-env.sh
+  template: src=spark-env.sh dest=/etc/spark/conf/spark-env.sh
+
+- name: configure spark-defaults.conf
+  template: src=spark-defaults.conf dest=/etc/spark/conf/spark-defaults.conf
+
+- name: configure spark metrics.properties
+  template: src=metrics.properties dest=/etc/spark/conf/metrics.properties

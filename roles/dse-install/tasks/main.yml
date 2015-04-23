@@ -1,6 +1,5 @@
 - name: installing datastax enterprise
-  apt: pkg=dse-full state=installed update-cache=yes
-  register: dse
+  apt: pkg=dse-full={{ dse.packageVersion }} state=installed
 
 - name: creating jna symlink
   shell: ln -s /usr/share/java/jna.jar /usr/share/dse/cassandra/lib || true
@@ -13,3 +12,6 @@
 
 - name: starting dse
   service: name=dse enabled=yes state=started
+
+- name: installing datastax opsCenter agent
+  apt: pkg=datastax-agent={{ opsAgent.packageVersion }} state=installed

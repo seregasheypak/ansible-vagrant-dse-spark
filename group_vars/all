@@ -12,8 +12,21 @@ mtu: 9216
 update_hosts: True
 install_oracle_jdk: True
 
+dse:
+  #http://debian.datastax.com/enterprise/pool/
+  packageVersion: 4.6.5-1
+
+opsCenter:
+  packageVersion: 5.1.1
+
+opsAgent:
+  packageVersion: 5.1.1
+
 #Link is hardcoded. See here: roles/spark_configuration/tasks/main.yml
 spark:
+  # package based installation
+  packageVersion: 1.2.0+cdh5.3.3+371-1.cdh5.3.3.p0.8~trusty-cdh5.3.3
+  sparkMaster: dsenode01
   version: 1.2.0
   workermemory: 512m
   drivermemory: 256m
@@ -21,6 +34,7 @@ spark:
   executormemory: 512m
   location: /usr/lib/spark
   webui: 8080
+  SPARK_MASTER_PORT: 8080
   eventLog: /var/log/spark/applicationHistory
 
 jobserver:

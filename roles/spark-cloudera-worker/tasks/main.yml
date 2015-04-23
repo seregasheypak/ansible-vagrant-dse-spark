@@ -1,0 +1,5 @@
+---
+- name: installing spark-master
+  apt: pkg={{item}} state=installed
+  with_items:
+  - spark-worker={{ spark.packageVersion }}

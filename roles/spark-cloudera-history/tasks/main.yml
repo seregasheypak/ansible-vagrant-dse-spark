@@ -1,0 +1,8 @@
+---
+- name: create spark-history server log dir
+  file: path={{spark.eventLog}} state=directory mode=777
+
+- name: installing spark-history-server
+  apt: pkg={{item}} state=installed
+  with_items:
+    - spark-history-server={{ spark.packageVersion }}
