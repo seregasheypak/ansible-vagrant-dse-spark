@@ -35,7 +35,8 @@ start() {
     log_failure_msg "${NAME} is running"
   fi
   #pid="`${SPARK_JOBSERVER_BIN} ${SPARK_JOBSERVER_OPTIONS} > ${SPARK_JOBSERVER_LOG} 2>&1 & echo $!`"
-  ${SPARK_JOBSERVER_BIN} ${SPARK_JOBSERVER_OPTIONS} > ${SPARK_JOBSERVER_LOG} 2>&1 & pid=$!
+  ${SPARK_JOBSERVER_BIN} ${SPARK_JOBSERVER_OPTIONS} > ${SPARK_JOBSERVER_LOG} 2>&1 & 
+  pid=$!
 
   if [[ -z "${pid}" ]]; then
     log_failure_msg "${NAME}"
