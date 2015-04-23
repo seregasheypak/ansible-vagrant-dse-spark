@@ -39,6 +39,19 @@ start() {
     log_failure_msg "${NAME}"
   else
     log_success_msg "${NAME}"
+    echo "PID FOR jobserver"
+    cat ${PIDFILE}
+    echo "PID FOR jobserver"
+    echo "ps pid"
+    ps -ef | grep $(cat "$PIDFILE")
+    echo "ps pid"
+
+    echo "ps by name"
+    ps -eg | grep jobserver
+    echo "ps by name"
+
+    echo "We write wrong PID"
+
     echo ${pid} > ${PIDFILE}
   fi
 }

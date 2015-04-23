@@ -1,12 +1,12 @@
 #!/bin/bash
 # Script to stop the job server
 
-echo "lol1"
+echo "server_stop:01"
 PIDFILE="/var/run/spark-jobserver.pid"
 
 cat "$PIDFILE"
 
-echo "lol2"
+echo "server_stop:02"
 if [ ! -f "$PIDFILE" ] || ! kill -0 $(cat "$PIDFILE"); then
    echo 'Job server not running'
 else
