@@ -1,9 +1,9 @@
 ---
-  - name: get CDH repository package
-    get_url: url=http://archive.cloudera.com/cdh5/one-click-install/trusty/amd64/cdh5-repository_1.0_all.deb dest=~/cdh5-repository_1.0_all.deb
+  - name: put cloudera.list repo
+    template: src=cloudera.cdh533.repo dest=/etc/apt/sources.list.d/cloudera.cdh5.sources.list
 
-  - name: Install CDH repository package
-    shell: dpkg -i ~/cdh5-repository_1.0_all.deb
+  - name: adding cdh5 repo key
+    shell: curl -L http://archive.cloudera.com/cdh5/ubuntu/trusty/amd64/cdh/archive.key | sudo apt-key add -
 
   - name: update the repositories
     shell: apt-get update
