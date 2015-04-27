@@ -18,7 +18,7 @@
   shell: mkdir -p {{ jobserver.location }}/conf
 
 - name: upload spark jobserver from local host, don\'t forget to build jobserver before provisioning
-  copy: src=jobserver_distro/spark-job-server.tar dest=/tmp owner=vagrant group=vagrant mode=0777
+  copy: src=jobserver_distro/spark-job-server.tar dest=/tmp owner={{ sudoUser }} group={{ sudoUser }} mode=0777
 
 - name: extract jobserver from uploaded acrhive
   shell: chdir=/tmp tar zxvf /tmp/spark-job-server.tar
