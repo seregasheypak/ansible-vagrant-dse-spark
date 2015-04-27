@@ -1,54 +1,61 @@
 ---
 - hosts: all
-  user: vagrant
+  user: "{{ sudoUser }}"
   sudo: True
   roles:
     - common
 
+
 - hosts: dse
-  user: vagrant
+  user: "{{ sudoUser }}"
   sudo: True
   roles:
     - dse-install
 
+
 - hosts: opscenter
-  user: vagrant
+  user: "{{ sudoUser }}"
   sudo: True
   roles:
     - opscenter
 
+
 - hosts: sparkmasters
-  user: vagrant
+  user: "{{ sudoUser }}"
   sudo: True
   roles:
     - spark-cloudera-master
 
 - hosts: sparkworkers
-  user: vagrant
+  user: "{{ sudoUser }}"
   sudo: True
   roles:
     - spark-cloudera-worker
 
+
 - hosts: sparkhistory
-  user: vagrant
+  user: "{{ sudoUser }}"
   sudo: True
   roles:
    - spark-cloudera-history
 
+
 - hosts: sparkjobserver
-  user: vagrant
+  user: "{{ sudoUser }}"
   sudo: True
   roles:
     - spark-jobserver
 
+
 - hosts: graphite
-  user: vagrant
+  user: "{{ sudoUser }}"
   sudo: True
   roles:
     - { role: install-graphite, tags: [ 'install-graphite'] }
 
+
 - hosts: grafana
-  user: vagrant
+  user: "{{ sudoUser }}"
   sudo: True
   roles:
      - {role: install-grafana, tags: ['install-grafana']}

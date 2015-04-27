@@ -26,7 +26,7 @@
 |Service name| 
 |:-----------| 
 | [opscenter](http://dsenode04:8888/)|
-| [spark-master](http://dsenode01:8080/)|
+| [spark-master](http://dsenode01:18080/)|
 | [history-server](http://dsenode02:18080/)|
 | [job-server](http://dsenode02:8090/)|
 | [graphite](http://dsenode03) admin:admin |
@@ -38,7 +38,9 @@
     * vagrant plugin install vagrant-hostsupdater to update your /etc/hosts
     * vagrant plugin install vagrant-cachier to speedup apt_cache for all instances sharing it
 * [Ansible](http://docs.ansible.com/intro_installation.html#latest-releases-via-homebrew-mac-osx)  
-
+    * [ansible-galaxy install debops.monit](https://github.com/debops/ansible-monit) to use services wrapped in monit
+    * [ansible-galaxy install briancoca.oracle_java7](https://galaxy.ansible.com/list#/roles/628) to install java7 without bicycle square wheels [link](https://groups.google.com/forum/#!msg/ansible-project/G84khLtAuQo/5shDJMPOjYYJ)
+    * ansible-galaxy init oracle_java7
 ## Run Spark downloader
 ```shell
 # go to project root
