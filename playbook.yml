@@ -5,6 +5,18 @@
   roles:
     - common
 
+- hosts: influxdb
+  user: "{{ sudoUser }}"
+  sudo: True
+  roles:
+    - { role: ansible-influxdb, tags: [ 'ansible-influxdb'] }
+
+
+- hosts: grafana
+  user: "{{ sudoUser }}"
+  sudo: True
+  roles:
+     - {role: install-grafana, tags: ['install-grafana']}
 
 - hosts: dse
   user: "{{ sudoUser }}"
@@ -45,17 +57,3 @@
   sudo: True
   roles:
     - spark-jobserver
-
-
-- hosts: graphite
-  user: "{{ sudoUser }}"
-  sudo: True
-  roles:
-    - { role: install-graphite, tags: [ 'install-graphite'] }
-
-
-- hosts: grafana
-  user: "{{ sudoUser }}"
-  sudo: True
-  roles:
-     - {role: install-grafana, tags: ['install-grafana']}
