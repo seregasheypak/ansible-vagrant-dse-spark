@@ -1,12 +1,24 @@
 ---
+#http://www.cloudera.com/content/cloudera/en/documentation/core/latest/topics/cdh_ig_cdh5_install.html#topic_4_4_1_unique_2__p_44_unique_2
+#sudo wget 'http://archive.cloudera.com/cdh5/ubuntu/trusty/amd64/cdh/cloudera.list' -O /etc/apt/sources.list.d/cloudera.list
   - name: put cloudera.list repo
-    template: src=cloudera.cdh533.repo dest=/etc/apt/sources.list.d/cloudera.cdh5.sources.list
+    template: src=cloudera.cdh533.repo dest=/etc/apt/sources.list.d/cloudera.list
 
   - name: adding cdh5 repo key
     shell: curl -L http://archive.cloudera.com/cdh5/ubuntu/trusty/amd64/cdh/archive.key | sudo apt-key add -
 
+# This step ensures that you get the right ZooKeeper package for the current CDH release. You need to prioritize the Cloudera repository you have just added,
+# such that you install the CDH version of ZooKeeper rather than the version that is bundled with Ubuntu Trusty.
+  - name: put cloudera.pref
+    template: src=cloudera.cdh533.pref dest=/etc/apt/preferences.d/cloudera.pref
+
   - name: update the repositories
     shell: apt-get update
+
+  - name: install hadoop client
+    apt: pkg={{item}} state=installed
+    with_items:
+      - hadoop-client={{ spark.hadoopClientPackageVersion }}
 
   - name: installing spark-core
     apt: pkg={{item}} state=installed
