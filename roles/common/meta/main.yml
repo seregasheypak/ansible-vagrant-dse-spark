@@ -1,2 +1,2 @@
 dependencies:
-  - { role: oracle_java7}
+  - { role: briancoca.oracle_java7}

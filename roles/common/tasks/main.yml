@@ -41,14 +41,21 @@
   template: backup=yes src=hosts dest=/etc/hosts
   when: update_hosts
 
-- name: remove OpenJDK
-  apt: pkg={{ item }} state=removed
-  with_items: 
-   - java
-   - jdk
+#- name: remove OpenJDK
+#  apt: pkg={{ item }} state=removed
+#  with_items:
+#   - java
+#   - jdk
 
-- name: adding oracle java repository
-  shell: add-apt-repository -y ppa:webupd8team/java
+- name: Remove 1.7.0 OpenJDK
+  apt: pkg={{ item }} state=removed
+  with_items:
+    - openjdk-7-jre-headless
+    - java-1.7.0-openjdk
+    - openjdk-7
+
+#- name: adding oracle java repository
+#  shell: add-apt-repository -y ppa:webupd8team/java
 
 - name: adding dse repo
   shell: echo "deb http://datastaxrepo_gmail.com:utJVKEg4lKeaWTX@debian.datastax.com/enterprise stable main" | sudo tee -a /etc/apt/sources.list.d/datastax.sources.list
