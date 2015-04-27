@@ -76,7 +76,9 @@ if [ -n "$HADOOP_HOME" ]; then
   export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/libfakeroot:/usr/lib64/libfakeroot:/usr/lib32/libfakeroot:/lib/native
 fi
 
-export HADOOP_CONF_DIR=${HADOOP_CONF_DIR:-etc/hadoop/conf}
+#export HADOOP_CONF_DIR=${HADOOP_CONF_DIR:-etc/hadoop/conf}
+#https://issues.cloudera.org/browse/DISTRO-693
+export HADOOP_CONF_DIR=${HADOOP_CONF_DIR}:-/etc/hadoop/conf}
 
 ### Comment above 2 lines and uncomment the following if
 ### you want to run with scala version, that is included with the package
