@@ -40,7 +40,6 @@
 * [Ansible](http://docs.ansible.com/intro_installation.html#latest-releases-via-homebrew-mac-osx)  
     * [ansible-galaxy install debops.monit](https://github.com/debops/ansible-monit) to use services wrapped in monit
     * [ansible-galaxy install briancoca.oracle_java7](https://galaxy.ansible.com/list#/roles/628) to install java7 without bicycle square wheels [link](https://groups.google.com/forum/#!msg/ansible-project/G84khLtAuQo/5shDJMPOjYYJ)
-    * ansible-galaxy init oracle_java7
 ## Run Spark downloader
 ```shell
 # go to project root
