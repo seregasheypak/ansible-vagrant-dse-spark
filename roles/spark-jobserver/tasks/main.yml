@@ -26,6 +26,9 @@
 - name: copy extracted jobserver files to target
   shell: cp -rf /tmp/jobserver/* {{ jobserver.location }}
 
+- name: replace with CDH 5.3.3 jar
+  copy: src=jobserver_distro/spark-job-server-cdh-5.3.3.jar dest={{ jobserver.location }}/spark-job-server.jar owner={{ sudoUser }} group={{ sudoUser }} mode=0777
+
 - name: copy spark-env.sh
   template: src=spark-env.sh dest={{ jobserver.location }}/conf/spark-env.sh
 

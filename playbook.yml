@@ -56,4 +56,4 @@
   user: "{{ sudoUser }}"
   sudo: True
   roles:
-    - spark-jobserver
+    - {role: spark-jobserver, tags: ['spark-jobserver']}
