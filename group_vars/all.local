@@ -1,0 +1,60 @@
+# Global parameters
+##
+
+# Cluster name
+site_name: spark_dse_cluster
+
+# IPv4 maximum transmission unit, 9216 is the maximum for Intel/Cisco hardware
+mtu: 9216
+
+sudoUser: vagrant
+
+# Custom configuration
+# This will install additional services, update files
+update_hosts: True
+
+dse:
+  #http://debian.datastax.com/enterprise/pool/
+  packageVersion: 4.6.5-1
+
+opsCenter:
+  packageVersion: 5.1.1
+
+opsAgent:
+  packageVersion: 5.1.1
+
+#Link is hardcoded. See here: roles/spark_configuration/tasks/main.yml
+spark:
+  packageVersion: 1.2.0+cdh5.3.3+371-1.cdh5.3.3.p0.8~trusty-cdh5.3.3
+  hadoopClientPackageVersion: 2.5.0+cdh5.3.3+846-1.cdh5.3.3.p0.8~trusty-cdh5.3.3
+  sparkMaster:  dsenode01
+  workermemory: 512m
+  workerCores: 2
+  drivermemory: 256m
+  daemonmemory: 512m
+  executormemory: 512m
+  location: /usr/lib/spark
+  webui: 8080
+  eventLog: /var/log/spark/applicationHistory
+
+jobserver:
+  version: 0.5.0
+  location: /usr/lib/spark-jobserver
+  webui: 8090
+  log: /var/log/jobserver
+
+historyserver:
+  serverLogLocation: /var/log/spark-history-server
+
+influxdb:
+  host: 192.168.56.30
+  graphitePort: 2003
+  version: 0.8.8
+  raft_port: 8090
+  seed_servers: [ ]
+  replication_factor: 1
+
+influxdb_client_port: 8086
+
+grafana:
+  listenAddress:  192.168.56.30
