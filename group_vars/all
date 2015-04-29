@@ -7,7 +7,7 @@ site_name: spark_dse_cluster
 # IPv4 maximum transmission unit, 9216 is the maximum for Intel/Cisco hardware
 mtu: 9216
 
-sudoUser: ubuntu
+sudoUser: vagrant
 
 # Custom configuration
 # This will install additional services, update files
@@ -26,8 +26,7 @@ opsAgent:
 #Link is hardcoded. See here: roles/spark_configuration/tasks/main.yml
 spark:
   packageVersion: 1.2.0+cdh5.3.3+371-1.cdh5.3.3.p0.8~trusty-cdh5.3.3
-  hadoopClientPackageVersion: 2.5.0+cdh5.3.3+846-1.cdh5.3.3.p0.8~trusty-cdh5.3.3
-  sparkMaster: ip-10-0-1-14.eu-west-1.compute.internal
+  sparkMaster: dsenode01
   workermemory: 512m
   workerCores: 2
   drivermemory: 256m
@@ -46,15 +45,9 @@ jobserver:
 historyserver:
   serverLogLocation: /var/log/spark-history-server
 
-influxdb:
-  host:  10.0.1.16
-  graphitePort: 2003
-  version: 0.8.8
-  raft_port: 8090
-  seed_servers: [ ]
-  replication_factor: 1
-
-influxdb_client_port: 8086
+graphite:
+  host: 192.168.56.30
+  port: 2003
 
 grafana:
-  listenAddress:  10.0.1.16
+  listenAddress: 192.168.56.30
