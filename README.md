@@ -1,13 +1,14 @@
 # Vagrant+Ansible+Cassandra DSE + Spark 1.2
 
 ## What is does
+On top of ubuntu/trusty64
 * Installs 
-    * DSE 4.6
-    * OpsCenter 5.1
+    *  oracle java 7
+    * DSE 4.6.*
+    * OpsCenter 5.1.*
     * Spark 1.2 (with History server)
     * JobServer
-    * graphite-carbon                 
-    * graphite-web
+    * influxdb 0.8.8             
     * grafana
 
 * Tweaks
@@ -20,7 +21,7 @@
 | dsenode01      | 192.168.56.10   | +            | +            |  +   |          |             |             |
 | dsenode02      | 192.168.56.20   |              | +            |  +   |          | +           | +           |
 | dsenode03      | 192.168.56.30   |              | +            |  +   |          |             |             |
-| dsenode04      | 192.168.56.30   |              |              |      | +        |             |             |
+| dsenode04      | 192.168.56.40   |              |              |      | +        |             |             |
 
 ## UI access
 |Service name| 
@@ -29,7 +30,7 @@
 | [spark-master](http://dsenode01:18080/)|
 | [history-server](http://dsenode02:18080/)|
 | [job-server](http://dsenode02:8090/)|
-| [graphite](http://dsenode03) admin:admin |
+| [influxdb](http://dsenode03:8083) root:root |
 | [grafana](http://dsenode03:3000) admin:admin|
 
 ## Reqirements
@@ -40,38 +41,12 @@
 * [Ansible](http://docs.ansible.com/intro_installation.html#latest-releases-via-homebrew-mac-osx)  
     * [ansible-galaxy install debops.monit](https://github.com/debops/ansible-monit) to use services wrapped in monit
     * [ansible-galaxy install briancoca.oracle_java7](https://galaxy.ansible.com/list#/roles/628) to install java7 without bicycle square wheels [link](https://groups.google.com/forum/#!msg/ansible-project/G84khLtAuQo/5shDJMPOjYYJ)
-## Run Spark downloader
-```shell
-# go to project root
-chmod +x download_spark_distro.sh
-./download_spark_distro.sh
-```
-Run script to download Apache Spark locally. Then Ansible is going to upload binary to VMs. We are trying to save some time for dowloading 200MB distro several times.
-
-**NB**: If link to distro changes, just fix it in download shell script **download_spark_distro.sh** and spark-configuration role
-```
-/Users/ssa/devel/appdata/ansible-vagrant-dse-spark/roles/spark_configuration/tasks/main.yml
-```
 
 ## Run vagrant to provision 3VMs
 ```shell
-# go to project root
+# goto project root
 vagrant up
 ```
-## start spark
-Run Ansible with spark related tags in order to start spark services in proper order. Vagrant and Ansible have weird ad-hoc integration, 
-hope it would be easier to run adhoc Ansible for vagrant later. I prepared two agly scripts for u.
-```shell
-#restart spark-master 
-chmod +x start-spark-master.sh
-./start-spark-master.sh
-
-#restart spark-workers 
-chmod +x start-spark-master.sh
-./start-spark-master.sh
-```
-Feel free to suggest how-to fix this nighmare
-
 ### Access VMs
 You can access them using ip 192.168.56.(10,20,30,40) or names dsenode0(1,2,3,4) (check your /etc/hosts file before).
 * you can do: ```shell vagrant ssh dsenode01``` from project root
@@ -87,3 +62,10 @@ You can access them using ip 192.168.56.(10,20,30,40) or names dsenode0(1,2,3,4)
 * Enter any DSE node ip address
 ![DSE node address](https://github.com/seregasheypak/ansible-vagrant-dse-spark/blob/master/.wiki_resources/03_add_cluster.png)
 * OpsCenter would ask you for credientials to install. Type ```vagrant``` as user and ```vagrant``` as password. Wait a little and you get agents on each nodes installed using user vagrant which has passwordless sudo.
+
+### Create influxdb database for spark metrics
+goto influxdb UI using root:root
+![influxdb UI](https://github.com/seregasheypak/ansible-vagrant-dse-spark/blob/master/.wiki_resources/influx_01_login.png)
+
+create database
+![influxdb UI](https://github.com/seregasheypak/ansible-vagrant-dse-spark/blob/master/.wiki_resources/influx_02_create_db.png)
