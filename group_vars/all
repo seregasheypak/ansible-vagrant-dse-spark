@@ -26,7 +26,8 @@ opsAgent:
 #Link is hardcoded. See here: roles/spark_configuration/tasks/main.yml
 spark:
   packageVersion: 1.2.0+cdh5.3.3+371-1.cdh5.3.3.p0.8~trusty-cdh5.3.3
-  sparkMaster: dsenode01
+  hadoopClientPackageVersion: 2.5.0+cdh5.3.3+846-1.cdh5.3.3.p0.8~trusty-cdh5.3.3
+  sparkMaster:  dsenode01
   workermemory: 512m
   workerCores: 2
   drivermemory: 256m
@@ -45,9 +46,15 @@ jobserver:
 historyserver:
   serverLogLocation: /var/log/spark-history-server
 
-graphite:
+influxdb:
   host: 192.168.56.30
-  port: 2003
+  graphitePort: 2003
+  version: 0.8.8
+  raft_port: 8090
+  seed_servers: [ ]
+  replication_factor: 1
+
+influxdb_client_port: 8086
 
 grafana:
-  listenAddress: 192.168.56.30
+  listenAddress:  192.168.56.30
