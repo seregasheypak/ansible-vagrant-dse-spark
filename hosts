@@ -13,6 +13,12 @@ dsenode03
 [opscenter]
 dsenode04
 
+[influxdb]
+dsenode03
+
+[grafana]
+dsenode03
+
 [sparkmasters]
 dsenode01
 
@@ -21,14 +27,10 @@ dsenode01
 dsenode02
 dsenode03
 
+[sparkhistory]
+dsenode02
+
 [sparkjobserver]
 dsenode02
 
-[graphite]
-dsenode03
 
-[grafana]
-dsenode03
-
-[sparkhistory]
-dsenode02
