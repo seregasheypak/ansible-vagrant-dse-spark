@@ -69,3 +69,15 @@ goto influxdb UI using root:root
 
 create database
 ![influxdb UI](https://github.com/seregasheypak/ansible-vagrant-dse-spark/blob/master/.wiki_resources/influx_02_create_db.png)
+
+### create datasource in Grafana
+![Datasource in Grafana](https://github.com/seregasheypak/ansible-vagrant-dse-spark/blob/master/.wiki_resources/grafana_01_create_db.png)
+
+### Grafana and Influxdb
+#### Simple dashboard
+import grafana-dashboards/spark-simple-example/spark-metrics-1430407766101.json and see how it works
+
+#### List metrics
+* login to http://192.168.56.30:8083
+* pick database
+* execute `select * from /.*/ limit 1`
