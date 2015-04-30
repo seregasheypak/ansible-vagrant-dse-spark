@@ -20,9 +20,9 @@
   template: src=config.toml dest=/opt/influxdb/shared/config.toml
   notify:
     - restart influxdb
-    - wait for influxdb port
+   # - wait for influxdb port
 
 - name: Create spark-metrics DB
-  shell: curl -X POST 'http://{{ influxdb.host }}:{{ influxdb_client_port }}/db?u=root&p=root' -d '{"name": "spark-metrics"}'
+  shell: "curl -X POST http://{{ influxdb.host }}:{{ influxdb_client_port }}/db?u=root&p=root -d {'name' : 'spark-metrics'}"
 
     
