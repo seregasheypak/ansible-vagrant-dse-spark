@@ -56,19 +56,19 @@ You can access them using ip 192.168.56.(10,20,30,40) or names dsenode0(1,2,3,4)
 ### Add DSE nodes to OpsCenter
 **Next time I'll provision nodes with dse-agent packages, we can automate this part**
 * Add existing cluster using top right button 
-![Add existing clsuter](https://github.com/seregasheypak/ansible-vagrant-dse-spark/tree/spark-cloudera/.wiki_resources/01_new_cluster.png)
+![Add existing clsuter](https://github.com/seregasheypak/ansible-vagrant-dse-spark/tree/spark-cloudera/.wiki_resources/01_new_cluster.png?raw=true)
 * Choose manage exsiting
-![Manage existing](https://github.com/seregasheypak/ansible-vagrant-dse-spark/tree/spark-cloudera/.wiki_resources/02_manage_existing.png)
+![Manage existing](https://github.com/seregasheypak/ansible-vagrant-dse-spark/tree/spark-cloudera/.wiki_resources/02_manage_existing.png?raw=true)
 * Enter any DSE node ip address
-![DSE node address](https://github.com/seregasheypak/ansible-vagrant-dse-spark/tree/spark-cloudera/.wiki_resources/03_add_cluster.png)
+![DSE node address](https://github.com/seregasheypak/ansible-vagrant-dse-spark/tree/spark-cloudera/.wiki_resources/03_add_cluster.png?raw=true)
 * OpsCenter would ask you for credientials to install. Type ```vagrant``` as user and ```vagrant``` as password. Wait a little and you get agents on each nodes installed using user vagrant which has passwordless sudo.
 
 ### Create influxdb database for spark metrics
 goto influxdb UI using root:root
-![influxdb UI](https://github.com/seregasheypak/ansible-vagrant-dse-spark/tree/spark-cloudera/.wiki_resources/influx_01_login.png)
+![influxdb UI](https://github.com/seregasheypak/ansible-vagrant-dse-spark/tree/spark-cloudera/.wiki_resources/influx_01_login.png?raw=true)
 
 create database
-![influxdb UI](https://github.com/seregasheypak/ansible-vagrant-dse-spark/tree/spark-cloudera/.wiki_resources/influx_02_create_db.png)
+![influxdb UI](https://github.com/seregasheypak/ansible-vagrant-dse-spark/tree/spark-cloudera/.wiki_resources/influx_02_create_db.png?raw=true)
 
 ### create datasource in Grafana
 ![Datasource in Grafana](https://github.com/seregasheypak/ansible-vagrant-dse-spark/tree/spark-cloudera/.wiki_resources/grafana_01_create_db.png)
