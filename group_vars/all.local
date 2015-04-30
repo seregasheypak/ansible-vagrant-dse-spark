@@ -25,16 +25,23 @@ opsAgent:
 
 #Link is hardcoded. See here: roles/spark_configuration/tasks/main.yml
 spark:
+  #packages
   packageVersion: 1.2.0+cdh5.3.3+371-1.cdh5.3.3.p0.8~trusty-cdh5.3.3
   hadoopClientPackageVersion: 2.5.0+cdh5.3.3+846-1.cdh5.3.3.p0.8~trusty-cdh5.3.3
+
+  #settings for spark services
   sparkMaster:  dsenode01
-  workermemory: 512m
+  workerMemory: 768m
   workerCores: 2
-  drivermemory: 256m
-  daemonmemory: 512m
-  executormemory: 512m
+
+  #default for running apps
+  defaultDriverMemory: 256m
+  defaultExecutorMemory: 256m
+
+  #for jobserver
   location: /usr/lib/spark
-  webui: 8080
+
+  #apps store log here
   eventLog: /var/log/spark/applicationHistory
 
 jobserver:
@@ -42,9 +49,6 @@ jobserver:
   location: /usr/lib/spark-jobserver
   webui: 8090
   log: /var/log/jobserver
-
-historyserver:
-  serverLogLocation: /var/log/spark-history-server
 
 influxdb:
   host: 192.168.56.30
