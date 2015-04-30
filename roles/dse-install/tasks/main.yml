@@ -15,3 +15,5 @@
 
 - name: installing datastax opsCenter agent
   apt: pkg=datastax-agent={{ opsAgent.packageVersion }} state=installed
+  notify:
+       - restart dse-agent
