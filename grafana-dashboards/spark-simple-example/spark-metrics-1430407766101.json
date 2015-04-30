@@ -1,0 +1,379 @@
+{
+  "id": 1,
+  "title": "spark-metrics",
+  "originalTitle": "spark-metrics",
+  "tags": [],
+  "style": "dark",
+  "timezone": "browser",
+  "editable": true,
+  "hideControls": false,
+  "sharedCrosshair": false,
+  "rows": [
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "leftMin": null,
+            "rightLogBase": 1,
+            "rightMax": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 1,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "free",
+              "column": "value",
+              "function": "sum",
+              "groupby_field": "",
+              "query": "select sum(value) from merge(/.*\\.worker\\.coresFree/i) where $timeFilter group by time($interval) order asc",
+              "series": "merge(/.*\\.worker\\.coresFree/i)"
+            },
+            {
+              "target": "",
+              "function": "sum",
+              "column": "value",
+              "series": "merge(/.*\\.worker\\.coresUsed/i)",
+              "query": "select sum(value) from merge(/.*\\.worker\\.coresUsed/i) where $timeFilter group by time($interval) order asc",
+              "alias": "used"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Workers core usage",
+          "tooltip": {
+            "shared": true,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "short",
+            "short"
+          ],
+          "transparent": true
+        }
+      ],
+      "title": "Row"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "leftMin": null,
+            "rightLogBase": 1,
+            "rightMax": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 2,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "jvm.heap.used",
+              "column": "value",
+              "function": "sum",
+              "query": "select sum(value) from merge(/.*\\.jvm\\.heap\\.used/i) where $timeFilter group by time($interval) order asc",
+              "series": "merge(/.*\\.jvm\\.heap\\.used/i)"
+            },
+            {
+              "target": "",
+              "function": "sum",
+              "column": "value",
+              "series": "merge(/.*\\.jvm\\.total\\.max/i)",
+              "query": "select sum(value) from merge(/.*\\.jvm\\.total\\.max/i) where $timeFilter group by time($interval) order asc",
+              "alias": "jvm.total.max"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Spark jvm.heap.used and max",
+          "tooltip": {
+            "shared": true,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "bytes",
+            "short"
+          ],
+          "transparent": true
+        }
+      ],
+      "title": "New row"
+    },
+    {
+      "title": "New row",
+      "height": "250px",
+      "editable": true,
+      "collapse": false,
+      "panels": [
+        {
+          "title": "Running apps",
+          "error": false,
+          "span": 12,
+          "editable": true,
+          "type": "graph",
+          "id": 3,
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "short",
+            "short"
+          ],
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "rightLogBase": 1,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "percentage": false,
+          "legend": {
+            "show": true,
+            "values": false,
+            "min": false,
+            "max": false,
+            "current": false,
+            "total": false,
+            "avg": false
+          },
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "shared": true
+          },
+          "timeFrom": null,
+          "timeShift": null,
+          "targets": [
+            {
+              "function": "max",
+              "column": "value",
+              "series": "dsenode01.master.apps",
+              "query": "select max(value) from \"dsenode01.master.apps\" where $timeFilter group by time($interval) order asc",
+              "alias": "apps"
+            }
+          ],
+          "aliasColors": {},
+          "seriesOverrides": [],
+          "links": [],
+          "transparent": true
+        }
+      ]
+    },
+    {
+      "title": "New row",
+      "height": "250px",
+      "editable": true,
+      "collapse": false,
+      "panels": [
+        {
+          "title": "Workers mem free/used",
+          "error": false,
+          "span": 12,
+          "editable": true,
+          "type": "graph",
+          "id": 4,
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "mbytes",
+            "short"
+          ],
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "rightLogBase": 1,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "percentage": false,
+          "legend": {
+            "show": true,
+            "values": false,
+            "min": false,
+            "max": false,
+            "current": false,
+            "total": false,
+            "avg": false
+          },
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "shared": true
+          },
+          "timeFrom": null,
+          "timeShift": null,
+          "targets": [
+            {
+              "function": "sum",
+              "column": "value",
+              "series": "merge(/.*worker\\.memFree_MB/i)",
+              "query": "select sum(value) from merge(/.*worker\\.memFree_MB/i) where $timeFilter group by time($interval) order asc",
+              "alias": "free"
+            },
+            {
+              "target": "",
+              "function": "mean",
+              "column": "value",
+              "series": "merge(/.*worker\\. memUsed_MB/i)",
+              "query": "select mean(value) from merge(/.*worker\\. memUsed_MB/i) where $timeFilter group by time($interval) order asc",
+              "alias": "used"
+            }
+          ],
+          "aliasColors": {},
+          "seriesOverrides": [],
+          "links": [],
+          "transparent": true
+        }
+      ]
+    }
+  ],
+  "nav": [
+    {
+      "collapse": false,
+      "enable": true,
+      "notice": false,
+      "now": true,
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "status": "Stable",
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ],
+      "type": "timepicker"
+    }
+  ],
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "templating": {
+    "list": []
+  },
+  "annotations": {
+    "list": []
+  },
+  "schemaVersion": 6,
+  "version": 13
+}
