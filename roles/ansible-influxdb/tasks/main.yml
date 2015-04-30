@@ -27,4 +27,4 @@
     url: "http://{{ influxdb.host }}:{{ influxdb_client_port }}/db?u=root&p=root"
     method: POST
     body: "{\"name\": \"spark-metrics\"}"
-    status_code: 201
+    status_code: 201, 409
