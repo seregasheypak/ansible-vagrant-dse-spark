@@ -1,6 +1,0 @@
----
-# defaults file for ansible-graphite
-graphite_log_rendering_performance: no
-graphite_log_cache_performance: no
-graphite_log_metric_access: no
-graphite_timezone: UTC
