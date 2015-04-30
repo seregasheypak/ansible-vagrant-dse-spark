@@ -15,5 +15,9 @@
   apt: pkg=opscenter state=installed update-cache=yes
   register: opscenterd
 
+- name: copy opscenterd.conf with custom settings
+  copy: src=opscenterd.conf dest=/etc/opscenter/opscenterd.conf
+
+
 - name: starting opscenter
   service: name=opscenterd enabled=yes state=started
