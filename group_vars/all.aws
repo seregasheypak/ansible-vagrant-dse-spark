@@ -25,16 +25,24 @@ opsAgent:
 
 #Link is hardcoded. See here: roles/spark_configuration/tasks/main.yml
 spark:
+  #packages
   packageVersion: 1.2.0+cdh5.3.3+371-1.cdh5.3.3.p0.8~trusty-cdh5.3.3
   hadoopClientPackageVersion: 2.5.0+cdh5.3.3+846-1.cdh5.3.3.p0.8~trusty-cdh5.3.3
-  sparkMaster: ip-172-31-4-154.eu-west-1.compute.internal
-  workermemory: 512m
+
+  #settings for spark services
+  #internal AWS DNS name for spark master
+  sparkMaster:  ip-172-31-4-154.eu-west-1.compute.internal
+  workerMemory: 768m
   workerCores: 2
-  drivermemory: 256m
-  daemonmemory: 512m
-  executormemory: 512m
+
+  #default for running apps
+  defaultDriverMemory: 256m
+  defaultExecutorMemory: 256m
+
+  #for jobserver
   location: /usr/lib/spark
-  webui: 8080
+
+  #apps store log here
   eventLog: /var/log/spark/applicationHistory
 
 jobserver:
@@ -43,11 +51,9 @@ jobserver:
   webui: 8090
   log: /var/log/jobserver
 
-historyserver:
-  serverLogLocation: /var/log/spark-history-server
-
 influxdb:
-  host:  172.31.4.156
+  #internal AWS IP
+  host: 172.31.4.156
   graphitePort: 2003
   version: 0.8.8
   raft_port: 8090
@@ -57,4 +63,5 @@ influxdb:
 influxdb_client_port: 8086
 
 grafana:
+  #internal AWS IP
   listenAddress:  172.31.4.156
