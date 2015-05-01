@@ -6,11 +6,6 @@
 
 - name: configure spark metrics.properties
   template: src=metrics.properties dest=/etc/spark/conf/metrics.properties
-#  notify:
-#    - restart spark-master
-#    - restart spark-worker
-#    - restart spark-history-server
-#    - restart spark-jobserver
 
 - name: add spark user to root group, it's workaround for spark-history server. It doesn't see job logs submitted by root users
   user: name=spark shell=/bin/bash groups=root append=yes

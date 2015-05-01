@@ -57,3 +57,10 @@
   sudo: True
   roles:
     - {role: spark-jobserver, tags: ['spark-jobserver']}
+
+- hosts: all
+  user: "{{ sudoUser }}"
+  sudo: True
+  roles:
+    - {role: spark-cloudera-restart, tags: ['spark-cloudera-restart']}
+

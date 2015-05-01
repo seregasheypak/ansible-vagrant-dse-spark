@@ -1,4 +1,11 @@
----
+#- name: restart all spark services
+#  notify:
+#    - restart spark-master
+#    - restart spark-worker
+#    - restart spark-history-server
+#    - restart spark-jobserver
+
+
 - name: restart spark-master
   service: name=spark-master state=restarted
   when: "'sparkmasters' in group_names"
