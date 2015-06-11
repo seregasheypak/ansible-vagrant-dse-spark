@@ -10,6 +10,10 @@ dsenode01
 dsenode02
 dsenode03
 
+[dse-only]
+dsenode01
+dsenode02
+
 [opscenter]
 dsenode04
 

@@ -7,8 +7,8 @@
 - name: configuring datastax enterprise
   template: src=cassandra.yaml dest=/etc/dse/cassandra/cassandra.yaml
 
-- name: Adding customized cassandra setting
-  template: src=cassandra-env.sh dest=/etc/dse/cassandra/cassandra-env.sh
+#- name: Adding customized cassandra setting
+#  template: src=cassandra-env.sh dest=/etc/dse/cassandra/cassandra-env.sh
 
 - name: starting dse
   service: name=dse enabled=yes state=started

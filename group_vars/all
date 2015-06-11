@@ -15,13 +15,13 @@ update_hosts: True
 
 dse:
   #http://debian.datastax.com/enterprise/pool/
-  packageVersion: 4.6.5-1
+  packageVersion: 4.7.0-1
 
 opsCenter:
-  packageVersion: 5.1.1
+  packageVersion: 5.1.3
 
 opsAgent:
-  packageVersion: 5.1.1
+  packageVersion: 5.1.3
 
 #Link is hardcoded. See here: roles/spark_configuration/tasks/main.yml
 spark:

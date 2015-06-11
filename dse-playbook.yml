@@ -1,0 +1,13 @@
+---
+- hosts: all
+  user: "{{ sudoUser }}"
+  sudo: True
+  roles:
+    - common
+
+- hosts: dse-only
+  user: "{{ sudoUser }}"
+  sudo: True
+  roles:
+    - dse-install
+
