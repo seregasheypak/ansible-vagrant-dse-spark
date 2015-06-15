@@ -37,7 +37,6 @@
   sudo: True
   roles:
     - spark-cloudera-master
-    #- hive-cloudera
 
 - hosts: sparkworkers
   user: "{{ sudoUser }}"
