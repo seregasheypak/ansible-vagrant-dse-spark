@@ -62,3 +62,6 @@ influxdb_client_port: 8086
 
 grafana:
   listenAddress:  192.168.56.30
+
+hive:
+  packageVersion: 0.13.1+cdh5.3.3+350-1.cdh5.3.3.p0.8~trusty-cdh5.3.3

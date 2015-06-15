@@ -1,0 +1,6 @@
+---
+#http://www.cloudera.com/content/cloudera/en/documentation/cdh5/v5-0-0/CDH5-Installation-Guide/cdh5ig_hive_installation.html
+- name: installing hive
+  apt: pkg={{item}} state=installed
+  with_items:
+  - hive={{ hive.packageVersion }}
