@@ -53,7 +53,7 @@ export SPARK_MASTER_WEBUI_PORT=7080
 # export SPARK_WORKER_MEMORY=2048m
 
 # Set the number of cores used by Spark Worker - if uncommented, it overrides the setting initial_spark_worker_resources in dse.yaml.
-# export SPARK_WORKER_CORES=4
+export SPARK_WORKER_CORES=4
 
 # The number of workers to be started on this node. Each worker will consume the fraction of resources
 # defined in dse.yaml:initial_spark_worker_resources at most or the amount of memory and the number of
@@ -62,7 +62,7 @@ export SPARK_MASTER_WEBUI_PORT=7080
 export SPARK_WORKER_INSTANCES=1
 
 # The amount of memory used by Spark Driver program
-export SPARK_DRIVER_MEMORY="512M"
+export SPARK_DRIVER_MEMORY="256M"
 
 # Warning: Be careful when changing temporary subdirectories. Make sure they different for different Spark components
 # and they are set with spark.local.dir for Spark Master and Spark Worker, and with java.io.tmpdir for Spark executor,
