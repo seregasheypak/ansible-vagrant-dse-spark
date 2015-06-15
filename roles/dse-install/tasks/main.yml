@@ -10,6 +10,12 @@
 #- name: Adding customized cassandra setting
 #  template: src=cassandra-env.sh dest=/etc/dse/cassandra/cassandra-env.sh
 
+- name: Put dse script and enable HADOOP for hive
+  template: src=dse.sh dest=/etc/default/dse
+
+- name: Put DSE-bundled spark conf
+  template: src=spark-env.sh dest=/etc/dse/spark/spark-env.sh
+
 - name: starting dse
   service: name=dse enabled=yes state=started
 
