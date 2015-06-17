@@ -22,7 +22,7 @@
   user: "{{ sudoUser }}"
   sudo: True
   roles:
-    - dse-install
+    - { role: dse-install, tags: [ 'dse-install'] }
 
 
 - hosts: opscenter
