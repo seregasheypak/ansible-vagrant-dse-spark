@@ -12,10 +12,3 @@ ansible-playbook \
 -u vagrant \
 playbook.yml \
 --tags "dse-install"
-
-ansible-playbook \
--i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory \
---private-key=.vagrant/machines/dsenode03/virtualbox/private_key \
--u vagrant \
-playbook.yml \
---tags "dse-install"
