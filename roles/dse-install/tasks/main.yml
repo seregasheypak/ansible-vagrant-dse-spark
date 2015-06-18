@@ -1,14 +1,34 @@
+
 - name: installing datastax enterprise
-  apt: pkg=dse-full={{ dse.packageVersion }} state=installed
+  apt: pkg={{item}} state=installed
+  with_items:
+    - dse-full=4.6.7-1
+    - dse=4.6.7-1
+    - dse-hive=4.6.7-1
+    - dse-pig=4.6.7-1
+    - dse-demos=4.6.7-1
+    - dse-libsolr=4.6.7-1
+    - dse-libtomcat=4.6.7-1
+    - dse-libsqoop=4.6.7-1
+    - dse-liblog4j=4.6.7-1
+    - dse-libmahout=4.6.7-1
+    - dse-libhadoop-native=4.6.7-1
+    - dse-libcassandra=4.6.7-1
+    - dse-libhive=4.6.7-1
+    - dse-libpig=4.6.7-1
+    - dse-libhadoop=4.6.7-1
+    - dse-libspark=4.6.7-1
+
+- name: installing datastax opsCenter agent
+  apt: pkg=datastax-agent={{ opsAgent.packageVersion }} state=installed
+  notify:
+       - restart dse-agent
 
 - name: creating jna symlink
   shell: ln -s /usr/share/java/jna.jar /usr/share/dse/cassandra/lib || true
 
 - name: configuring datastax enterprise
   template: src=cassandra.yaml dest=/etc/dse/cassandra/cassandra.yaml
-
-#- name: Adding customized cassandra setting
-#  template: src=cassandra-env.sh dest=/etc/dse/cassandra/cassandra-env.sh
 
 - name: Put dse script and enable HADOOP for hive
   template: src=dse.sh dest=/etc/default/dse
@@ -17,9 +37,4 @@
   template: src=spark-env.sh dest=/etc/dse/spark/spark-env.sh
 
 - name: starting dse
-  service: name=dse enabled=yes state=started
-
-- name: installing datastax opsCenter agent
-  apt: pkg=datastax-agent={{ opsAgent.packageVersion }} state=installed
-  notify:
-       - restart dse-agent
+  service: name=dse enabled=yes state=restarted
